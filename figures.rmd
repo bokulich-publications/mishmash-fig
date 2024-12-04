@@ -1,0 +1,90 @@
+---
+title: "MISHMASH Figures"
+author: "Lina Kim"
+date: "2024-12-04"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(data.table)
+library(dplyr)
+library(ggplot2)
+library(gtable)
+library(hrbrthemes)
+library(viridis)
+library(waffle)
+```
+
+## Set up data for both case studies
+
+
+```{r setup.cs1}
+order.cs1 <- 0:3
+badges <- c('None', 'Bronze', 'Silver', 'Gold')
+count.cs1 <- c(39, 6, 34, 7)
+cs1.df <- data.frame(order.cs1, badges, count.cs1)
+colnames(cs1.df) <- c('order', 'badge', 'badge.count')
+```
+
+```{r setup.cs2}
+fungi.year.df <- read.csv("data/fungi_year_count.csv")
+fungi.year.long <- melt(setDT(fungi.year.df), variable.name = "Badge", id.vars = "Year")
+fungi.pub.df <- read.csv("data/fungi_publisher_count.csv")
+fungi.pub.long <- melt(setDT(fungi.pub.df), variable.name = "Badge", id.vars = "Publisher")
+fungi.df <- colSums(fungi.year.df[-1])
+```
+
+## Plots
+
+```{r plot.cs1}
+waffle(cs1.df[-1], rows = 9, colors = c("#000000", "#af6b0e", "#bab9b8", "#ffb900"), legend_pos = "bottom")
+```
+
+```{r plot.cs2}
+# Overall
+waffle(fungi.df, rows = 9, colors = c("#000000", "#af6b0e", "#bab9b8", "#ffb900"), legend_pos = "bottom")
+
+# By year
+fungi.year.line <- fungi.year.long %>% 
+  ggplot(aes(x = Year, y = value, group = Badge, color = Badge)) + 
+  geom_line(show.legend = FALSE) +
+  scale_color_manual(values = c("#000000", "#af6b0e", "#bab9b8", "#ffb900")) +
+  theme_classic() + 
+  ggtitle("Sequencing Data Badges by Year (Count)") +
+  scale_x_continuous(breaks = seq(2013, 2023, 1), labels = seq(2013, 2023, 1)) +
+  scale_y_continuous(breaks = seq(0, 21, 5), labels = seq(0, 21, 5), limits = c(0, 21)) +
+  xlab("") +
+  ylab("Count of Badges")
+
+# Stacked bar chart
+fungi.year.bar <- ggplot(fungi.year.long, aes(fill=Badge, y=value, x=Year)) + 
+  geom_bar(position="fill", stat="identity") + 
+  scale_fill_manual(values = c("#000000", "#af6b0e", "#bab9b8", "#ffb900")) +
+  theme_classic() +
+  scale_x_continuous(breaks = seq(2013, 2023, 1), labels = seq(2013, 2023, 1)) +
+  ggtitle("Sequencing Data Badges by Year (%)") +
+  xlab("Publication Year") +
+  ylab("% of Badges") +
+  theme(legend.position = "bottom")
+
+plot(rbind(ggplotGrob(fungi.year.line), ggplotGrob(fungi.year.bar), size = "last"))
+
+# Badge assignments by publisher
+pub.levels <- fungi.pub.long %>%
+  group_by(Publisher, Badge) %>%
+  summarise(prop = sum(value)) %>%
+  mutate(prop = prop.table(prop)) %>%
+  arrange(Badge != 'None', desc(prop)) %>%
+  pull(Publisher) %>%
+  unique()
+
+fungi.pub.long %>% 
+  mutate(Publisher = factor(Publisher, pub.levels)) %>% 
+  ggplot(aes(y=Publisher, x=value, fill=Badge)) +
+  geom_bar(position="fill", stat="identity") +
+  scale_fill_manual(values = c("#000000", "#af6b0e", "#bab9b8", "#ffb900")) +
+  theme_classic() +
+  xlab("Badge Proportion")
+```
