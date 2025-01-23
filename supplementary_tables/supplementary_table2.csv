@@ -4,18 +4,17 @@ PMC4600977,00_None,FALSE,,marker-gene,TRUE,FALSE,Springer Nature,Scientific Repo
 PMC4924232,00_None,FALSE,,marker-gene,TRUE,FALSE,BioMed Central,BMC Research Notes,2016
 PMC5030358,00_None,FALSE,,marker-gene,TRUE,FALSE,American Society for Microbiology,mBio,2016
 PMC5532459,00_None,FALSE,,marker-gene,FALSE,FALSE,BMJ Publishing Group,Gut,2016
-PMC5309391,00_None,FALSE,,marker-gene,TRUE,FALSE,Frontiers Media S.A.,Frontiers in Microbiology,2017
 PMC5411419,00_None,FALSE,,marker-gene,TRUE,FALSE,Frontiers Media S.A.,Frontiers in Microbiology,2017
 PMC5571498,00_None,FALSE,,marker-gene,TRUE,FALSE,BioMed Central,Microbiome,2017
 PMC6014669,00_None,FALSE,,marker-gene,TRUE,FALSE,Public Library of Science,PLoS ONE,2018
 PMC6075469,00_None,FALSE,,marker-gene,TRUE,FALSE,Elsevier,The Journal of Allergy and Clinical Immunology,2018
 PMC6196340,00_None,FALSE,,marker-gene,TRUE,FALSE,Baishideng Publishing Group Inc,World Journal of Gastroenterology,2018
 PMC6580778,00_None,FALSE,,shotgun,NA,FALSE,BMJ Publishing Group,Gut,2018
-PMC6413461,00_None,"""No public data is linked to this project.""",EMBL-EBI European Nucleotide Archive,marker-gene,FALSE,FALSE,BioMed Central,Microbiome,2019
+PMC6413461,00_None,FALSE,EMBL-EBI European Nucleotide Archive,marker-gene,FALSE,FALSE,BioMed Central,Microbiome,2019
 PMC6581275,00_None,FALSE,,marker-gene,FALSE,FALSE,Public Library of Science,PLoS ONE,2019
 PMC6731296,00_None,FALSE,,marker-gene,FALSE,FALSE,Springer Nature,Scientific Reports,2019
 PMC6819376,00_None,FALSE,,marker-gene,TRUE,FALSE,BioMed Central,Journal of Translational Medicine,2019
-PMC7295773,00_None,"""Sequencing data have been deposited in the European Bioinformatics Institute (EBI) European Nucleotide Archive (ENA) under accession number XXXX""",,marker-gene,FALSE,FALSE,Springer Nature,Scientific Reports,2020
+PMC7295773,00_None,FALSE,,marker-gene,FALSE,FALSE,Springer Nature,Scientific Reports,2020
 PMC7318920,00_None,FALSE,,shotgun,NA,FALSE,Elsevier,Gastroenterology,2020
 PMC7475073,00_None,FALSE,,marker-gene,TRUE,FALSE,Elsevier,EBioMedicine,2020
 PMC7519184,00_None,FALSE,,marker-gene,TRUE,FALSE,Hindawi,Disease Markers,2020
@@ -33,12 +32,12 @@ PMC8386383,00_None,FALSE,,marker-gene,FALSE,FALSE,American Society for Microbiol
 PMC8482594,00_None,FALSE,,marker-gene,TRUE,FALSE,BioMed Central,Gut Pathogens,2021
 PMC8714770,00_None,FALSE,,shotgun,NA,FALSE,Elsevier,Current Research in Microbial Sciences,2021
 PMC8928933,00_None,FALSE,,marker-gene,TRUE,FALSE,MDPI,Current Issues in Molecular Biology,2021
-PMC8873986,00_None,Broken link,Westlake Laboratory database,marker-gene,TRUE,FALSE,Frontiers Media S.A.,Frontiers in Nutrition,2022
+PMC8873986,00_None,FALSE,Westlake Laboratory database,marker-gene,TRUE,FALSE,Frontiers Media S.A.,Frontiers in Nutrition,2022
 PMC8877467,00_None,FALSE,,shotgun,NA,FALSE,MDPI,Microorganisms,2022
-PMC8964356,00_None,"""The data under accession will be available on 2026-05-30""",Genome Sequence Archive (GSA),marker-gene,TRUE,FALSE,Frontiers Media S.A.,Frontiers in Microbiology,2022
-PMC9032081,00_None,"""No public data is linked to this project.""",EMBL-EBI European Nucleotide Archive,marker-gene,TRUE,FALSE,MDPI,Journal of Fungi,2022
-PMC9033777,00_None,"""No public data is linked to this project.""",EMBL-EBI European Nucleotide Archive,marker-gene,TRUE,FALSE,Springer Nature,Scientific Reports,2022
-PMC9063241,00_None,"Controlled access; ""access to existing and new data will be subject to costs.""",Twins UK King's College London,shotgun,NA,FALSE,BioMed Central,Environmental Health,2022
+PMC8964356,00_None,FALSE,Genome Sequence Archive (GSA),marker-gene,TRUE,FALSE,Frontiers Media S.A.,Frontiers in Microbiology,2022
+PMC9032081,00_None,FALSE,EMBL-EBI European Nucleotide Archive,marker-gene,TRUE,FALSE,MDPI,Journal of Fungi,2022
+PMC9033777,00_None,FALSE,EMBL-EBI European Nucleotide Archive,marker-gene,TRUE,FALSE,Springer Nature,Scientific Reports,2022
+PMC9063241,00_None,FALSE,Twins UK King's College London,shotgun,NA,FALSE,BioMed Central,Environmental Health,2022
 PMC9164086,00_None,FALSE,,marker-gene,TRUE,FALSE,MDPI,Current Issues in Molecular Biology,2022
 PMC9318871,00_None,FALSE,,marker-gene,TRUE,FALSE,MDPI,International Journal of Molecular Sciences,2022
 PMC9354959,00_None,FALSE,,marker-gene,FALSE,FALSE,Frontiers Media S.A.,Frontiers in Nutrition,2022
@@ -48,7 +47,7 @@ PMC9415448,00_None,FALSE,,marker-gene,TRUE,FALSE,Taylor & Francis,Gut Microbes,2
 PMC9578447,00_None,FALSE,,marker-gene,FALSE,TRUE,Taylor & Francis,Gut Microbes,2022
 PMC9638757,00_None,FALSE,,marker-gene,TRUE,FALSE,Elsevier,European Urology Open Science,2022
 PMC9765473,00_None,FALSE,,marker-gene,FALSE,FALSE,American Society for Microbiology,mBio,2022
-PMC9779860,00_None,"""No public data is linked to this project.""",NCBI Sequence Read Archive,marker-gene,TRUE,FALSE,MDPI,International Journal of Molecular Sciences,2022
+PMC9779860,00_None,FALSE,NCBI Sequence Read Archive,marker-gene,TRUE,FALSE,MDPI,International Journal of Molecular Sciences,2022
 PMC9835811,00_None,FALSE,,marker-gene,TRUE,FALSE,Frontiers Media S.A.,Frontiers in Immunology,2022
 PMC10122788,00_None,FALSE,,shotgun,NA,FALSE,Baishideng Publishing Group Inc,World Journal of Gastroenterology,2023
 PMC10155393,00_None,FALSE,,marker-gene,TRUE,FALSE,BioMed Central,Arthritis Research & Therapy,2023
@@ -60,10 +59,8 @@ PMC11258666,00_None,FALSE,,marker-gene,TRUE,FALSE,Elsevier,Journal of Advanced R
 PMC9582043,00_None,FALSE,,marker-gene,TRUE,FALSE,Springer Nature,Pediatric Research,2023
 PMC9856008,00_None,FALSE,,marker-gene,FALSE,FALSE,MDPI,Biomedicines,2023
 PMC9940757,00_None,FALSE,,shotgun,NA,FALSE,Frontiers Media S.A.,Frontiers in Cellular and Infection Microbiology,2023
-PMC9974954,00_None,No FASTQs available,National Microbiology Data Center (NMDC),marker-gene,FALSE,FALSE,Springer Nature,Communications Biology,2023
-PMC3598745,01_Bronze,TRUE,GenBank,marker-gene,FALSE,FALSE,Public Library of Science,PLoS ONE,2013
+PMC9974954,00_None,FALSE,National Microbiology Data Center (NMDC),marker-gene,FALSE,FALSE,Springer Nature,Communications Biology,2023
 PMC3684604,01_Bronze,TRUE,NCBI Sequence Read Archive,marker-gene,FALSE,FALSE,Public Library of Science,PLoS ONE,2013
-PMC3895777,01_Bronze,TRUE,GenBank,marker-gene,FALSE,FALSE,BioMed Central,BMC Research Notes,2014
 PMC3957428,01_Bronze,TRUE,MG-RAST,marker-gene,FALSE,FALSE,Springer Nature,Nature,2014
 PMC5784577,01_Bronze,TRUE,EMBL-EBI European Nucleotide Archive,marker-gene,FALSE,FALSE,PeerJ Inc.,PeerJ,2018
 PMC5791994,01_Bronze,TRUE,NCBI Sequence Read Archive,marker-gene,FALSE,TRUE,Public Library of Science,PLoS ONE,2018
@@ -146,7 +143,7 @@ PMC9473543,02_Silver,TRUE,NCBI Sequence Read Archive,marker-gene,TRUE,FALSE,Fron
 PMC9484836,02_Silver,TRUE,NCBI Sequence Read Archive,marker-gene,TRUE,FALSE,Frontiers Media S.A.,Frontiers in Endocrinology,2022
 PMC9486989,02_Silver,TRUE,EMBL-EBI European Nucleotide Archive,marker-gene,TRUE,FALSE,Oxford University Press,FEMS Microbiology Ecology,2022
 PMC9602787,02_Silver,TRUE,NCBI Sequence Read Archive,marker-gene,TRUE,FALSE,American Society for Microbiology,Microbiology Spectrum,2022
-PMC9623673,02_Silver,Controlled access; accessibility requirements not reported.,National Genomics Data Center (NGDC),marker-gene,TRUE,FALSE,Frontiers Media S.A.,Frontiers in Microbiology,2022
+PMC9623673,02_Silver,TRUE,National Genomics Data Center (NGDC),marker-gene,TRUE,FALSE,Frontiers Media S.A.,Frontiers in Microbiology,2022
 PMC9728469,02_Silver,TRUE,NCBI Sequence Read Archive,marker-gene,FALSE,TRUE,Taylor & Francis,Gut Microbes,2022
 PMC9927108,02_Silver,TRUE,EMBL-EBI European Nucleotide Archive,shotgun,NA,FALSE,American Society for Microbiology,Microbiology Spectrum,2022
 PMC9927468,02_Silver,TRUE,NCBI Sequence Read Archive,shotgun,NA,FALSE,American Society for Microbiology,Microbiology Spectrum,2022
@@ -166,6 +163,7 @@ PMC9853418,02_Silver,TRUE,NCBI Sequence Read Archive,marker-gene,TRUE,FALSE,Fron
 PMC9927295,02_Silver,TRUE,NCBI Sequence Read Archive,marker-gene,TRUE,FALSE,American Society for Microbiology,Microbiology Spectrum,2023
 PMC9953204,02_Silver,TRUE,EMBL-EBI European Nucleotide Archive,marker-gene,TRUE,FALSE,MDPI,Biomolecules,2023
 PMC9994644,02_Silver,TRUE,NCBI Sequence Read Archive,shotgun,NA,FALSE,Frontiers Media S.A.,Frontiers in Microbiology,2023
+PMC5309391,03_Gold,TRUE,,marker-gene,TRUE,FALSE,Frontiers Media S.A.,Frontiers in Microbiology,2017
 PMC4967335,03_Gold,TRUE,EMBL-EBI European Nucleotide Archive,marker-gene,TRUE,TRUE,BioMed Central,Microbiome,2016
 PMC5053876,03_Gold,TRUE,EMBL-EBI European Nucleotide Archive,marker-gene,TRUE,TRUE,Springer Nature,Nature Medicine,2016
 PMC7026674,03_Gold,TRUE,MG-RAST,marker-gene,TRUE,TRUE,Frontiers Media S.A.,Frontiers in Microbiology,2020

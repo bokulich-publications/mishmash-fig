@@ -37,7 +37,6 @@ PMC11201546,00_None,FALSE,,shotgun,NA,TRUE
 PMC11240908,00_None,FALSE,,shotgun,NA,FALSE
 PMC11246047,00_None,FALSE,,marker-gene,FALSE,TRUE
 PMC11254947,00_None,FALSE,,shotgun,NA,TRUE
-PMC7615798,00_None,FALSE,,marker-gene,FALSE,TRUE
 PMC10846256,01_Bronze,TRUE,EMBL-EBI European Nucleotide Archive,marker-gene,FALSE,TRUE
 PMC10952111,01_Bronze,TRUE,NCBI Sequence Read Archive,marker-gene,TRUE,FALSE
 PMC11116651,01_Bronze,TRUE,NCBI Sequence Read Archive,marker-gene,FALSE,FALSE

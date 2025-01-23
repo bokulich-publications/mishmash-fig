@@ -1,7 +1,5 @@
 ---
 title: "MISHMASH Figures"
-author: "Lina Kim"
-date: "2024-12-04"
 output: pdf_document
 ---
 
@@ -19,14 +17,17 @@ library(waffle)
 
 ## Set up data for both case studies
 
+Set up data for Case Study 1
 
 ```{r setup.cs1}
 order.cs1 <- 0:3
 badges <- c('None', 'Bronze', 'Silver', 'Gold')
-count.cs1 <- c(39, 6, 34, 7)
+count.cs1 <- c(39, 6, 34, 7)  # Added total counts manually
 cs1.df <- data.frame(order.cs1, badges, count.cs1)
 colnames(cs1.df) <- c('order', 'badge', 'badge.count')
 ```
+
+Set up data for Case Study 2
 
 ```{r setup.cs2}
 fungi.year.df <- read.csv("data/fungi_year_count.csv")
@@ -38,9 +39,15 @@ fungi.df <- colSums(fungi.year.df[-1])
 
 ## Plots
 
+Plot waffle plot for Case Study 1 badges
+
 ```{r plot.cs1}
 waffle(cs1.df[-1], rows = 9, colors = c("#000000", "#af6b0e", "#bab9b8", "#ffb900"), legend_pos = "bottom")
 ```
+
+Plot waffle plot for Case Study 2 badges
+Plot trends for Case Study 2 by year: Line plot and stacked bar chart
+Plot badge assignments for Case Study 2 by publisher
 
 ```{r plot.cs2}
 # Overall
