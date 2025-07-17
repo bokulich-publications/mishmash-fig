@@ -1,0 +1,189 @@
+---
+title: "MISHMASH Manuscript Figures"
+author: "Kim L, Lavrinienko A, Sebechlebska Z, Stoltenberg S, Bokulich NA"
+output: pdf_document
+---
+
+# Setup: Load libraries
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(data.table)
+library(dplyr)
+library(ggplot2)
+library(gridExtra)
+library(gtable)
+library(hrbrthemes)
+library(scales)
+library(viridis)
+library(waffle)
+```
+
+# Setup: Load data
+
+```{r load.data}
+# Case Study 1
+order.cs1 <- 0:3
+badges <- c('None', 'Bronze', 'Silver', 'Gold')
+count.cs1 <- c(38, 6, 34, 7)
+cs1.df <- data.frame(order.cs1, badges, count.cs1)
+colnames(cs1.df) <- c('order', 'badge', 'badge.count')
+
+# Case Study 2
+fungi.year.df <- read.csv("data/fungi_year_count.csv")
+fungi.year.long <- melt(setDT(fungi.year.df), variable.name = "Badge", id.vars = "Year")
+fungi.pub.df <- read.csv("data/fungi_publisher_count.csv")
+fungi.pub.long <- melt(setDT(fungi.pub.df), variable.name = "Badge", id.vars = "Publisher")
+fungi.df <- colSums(fungi.year.df[,-1])
+
+# Case Study 3
+count.cs3 <- c(18, 26, 38, 4)
+cs3.df <- data.frame(order.cs1, badges, count.cs3)
+colnames(cs3.df) <- c('order', 'badge', 'badge.count')
+
+# Open Field Survey
+order.ofs <- 0:3
+badges <- c('None', 'Bronze', 'Silver', 'Gold')
+count.ofs <- c(1325, 580, 790, 234) 
+ofs.df <- data.frame(order.ofs, badges, count.ofs)
+colnames(ofs.df) <- c('order', 'badge', 'badge.count')
+```
+
+# Plot Figure 3
+
+3a: Stacked barplot of all case studies + Open Field Survey
+3b: Line plot of badge assignments for Case Study 2, by total frequency per year
+
+```{r plot.fig3, fig.width=8, fig.height=8}
+# Set up data
+cs1.df.comp <- cs1.df
+cs1.df.comp$study <- "Case Study 1 (n = 85)"
+cs1.df.comp$badge.count <- cs1.df.comp$badge.count / sum(cs1.df.comp$badge.count)
+
+cs2.df.comp <- data.frame(cbind(0:3, names(fungi.df), as.numeric(fungi.df)))
+colnames(cs2.df.comp) <- c("order", "badge", "badge.count")
+cs2.df.comp$study <- "Case Study 2 (n = 199)"
+cs2.df.comp$badge.count <- as.numeric(cs2.df.comp$badge.count)
+cs2.df.comp$badge.count <- cs2.df.comp$badge.count / sum(cs2.df.comp$badge.count)
+
+cs3.df.comp <- cs3.df
+cs3.df.comp$study <- "Case Study 3 (n = 86)"
+cs3.df.comp$badge.count <- as.numeric(cs3.df.comp$badge.count)
+cs3.df.comp$badge.count <- cs3.df.comp$badge.count / sum(cs3.df.comp$badge.count)
+
+ofs.df.comp <- ofs.df
+ofs.df.comp$study <- "Open Field Survey (n = 2929)"
+ofs.df.comp$badge.count <- ofs.df.comp$badge.count / sum(ofs.df.comp$badge.count)
+
+combo.df <- rbind(cs1.df.comp, cs2.df.comp, cs3.df.comp, ofs.df.comp)
+combo.df$badge <- factor(combo.df$badge, levels=c("Gold", "Silver", "Bronze", "None"))
+font.size = 15
+
+# Draw figures
+gCSBar <- combo.df %>% ggplot(aes(y=study, x=badge.count, fill=badge)) +
+  geom_bar(position="fill", stat="identity") +
+  theme_classic() +
+  scale_fill_manual(values = c("#000000", "#af6b0e", "#bab9b8", "#ffb900"),
+                    limits = c("None", "Bronze", "Silver", "Gold"),
+                    name = "Badge") +
+  theme_classic() +
+  theme(text = element_text(size=font.size),
+        legend.position="right",
+        legend.title=element_blank(),
+        axis.title.x = element_text(vjust=-0.5)) +
+  xlab("Badge Proportion") +
+  ylab("")
+
+gCS2Line <- ggplot(data = fungi.year.long, aes(y = value, x = Year, group = Badge)) +
+  geom_line(aes(color = Badge)) +
+  scale_color_manual(values = c("#000000", "#af6b0e", "#bab9b8", "#ffb900"),
+                     name = "Badge") +
+  ylab("Badge Count") +
+  scale_x_continuous(breaks = seq(2013, 2023, 1), labels = seq(2013, 2023, 1),
+                     guide = guide_axis(angle = 90)) +
+  scale_y_continuous(breaks = seq(0, 25, 5), labels = seq(0, 25, 5), limits = c(0, 25)) +
+  theme_classic() +
+  theme(text = element_text(size=font.size),
+        legend.position = "none",
+        axis.title.x = element_text(vjust=-0.5),
+        axis.title.y = element_text(vjust=1))
+
+gCS2LineB <- ggplotGrob(gCS2Line)
+gCSBarB <- ggplotGrob(gCSBar)
+
+grid::grid.newpage()
+grid::grid.draw(cbind(gCSBarB, gCS2LineB))
+```
+
+# Plot Figure 4
+
+Stacked barplot of badge assignments along utilized databases from the Open Field Survey.
+
+```{r plot.fig4}
+font.size = 15
+ofs.db.df <- read.csv("data/ofs_db_df.csv")
+ofs.db.df$Badge <- factor(ofs.db.df$Badge, levels=c("Gold", "Silver", "Bronze"))
+ofs.db.df$Database <- factor(ofs.db.df$Database, levels=c("Figshare (n = 28)",
+                                                          "DDBJ (n = 35)",
+                                                          "MG-RAST (n = 40)",
+                                                          "CNCB (n = 52)",
+                                                          "ENA (n = 289)",
+                                                          "SRA (n = 1053)"))
+
+ofs.db.df %>% ggplot(aes(y=Database, x=Count, fill=Badge)) +
+  geom_bar(position="fill", stat="identity") +
+  theme_classic() +
+  scale_fill_manual(values = c("#af6b0e", "#bab9b8", "#ffb900"),
+                    limits = c("Bronze", "Silver", "Gold"),
+                    name = "Badge") +
+  theme_classic() +
+  theme(text = element_text(size=font.size),
+        legend.position="right",
+        legend.title=element_blank(),
+        axis.title.x = element_text(vjust=-0.5)) +
+  xlab("Badge Proportion") +
+  ylab("")
+```
+
+
+# Plot Supplementary Figure 4
+
+Stacked barplot of badge assignments for Case Study 2, by proportion of papers per year.
+
+```{r plot.sfig4}
+fungi.year.bar <- ggplot(fungi.year.long, aes(fill=Badge, y=value, x=Year)) + 
+   geom_bar(position="fill", stat="identity") + 
+   scale_fill_manual(values = c("#000000", "#af6b0e", "#bab9b8", "#ffb900")) +
+   theme_classic() +
+   scale_x_continuous(breaks = seq(2013, 2023, 1), labels = seq(2013, 2023, 1)) +
+   ggtitle("Sequencing Data Badges by Year (%)") +
+   xlab("Publication Year") +
+   ylab("% of Badges") +
+   theme(legend.position = "bottom")
+
+plot(fungi.year.bar)
+```
+
+# Plot Supplementary Figure 5
+
+Stacked barplot of badge assignments for Case Study 2, by article publishing group.
+
+```{r plot.sfig5}
+pub.levels <- fungi.pub.long %>%
+  group_by(Publisher, Badge) %>%
+  summarise(prop = sum(value)) %>%
+  mutate(prop = prop.table(prop)) %>%
+  arrange(Badge != 'None', desc(prop)) %>%
+  pull(Publisher) %>%
+  unique()
+
+fungi.pub.long %>% 
+  mutate(Publisher = factor(Publisher, pub.levels)) %>% 
+  ggplot(aes(y=Publisher, x=value, fill=Badge)) +
+  geom_bar(position="fill", stat="identity") +
+  scale_fill_manual(values = c("#000000", "#af6b0e", "#bab9b8", "#ffb900")) +
+  theme_classic() +
+  theme(text = element_text(size=20)) +
+  xlab("Badge Proportion")
+```
